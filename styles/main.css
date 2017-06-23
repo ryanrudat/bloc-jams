@@ -26,6 +26,17 @@ body {
   z-index: 1;
 }
 
+.navbar-link:hover {
+  background-color: white
+}
+
+.navbar-link:active {
+  rgb(233,50,117)
+
+}
+
+
+
 .navbar .logo {
   position: relative;
   left: 2rem;
