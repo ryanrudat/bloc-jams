@@ -35,8 +35,6 @@ body {
 
 }
 
-
-
 .navbar .logo {
   position: relative;
   left: 2rem;
@@ -80,6 +78,10 @@ body {
 .container {
     margin: 0 auto;
     max-width: 64rem;
+}
+
+.container.narrow {
+    max-width: 56rem;
 }
 
 /* Medium and small screens (640px) */
