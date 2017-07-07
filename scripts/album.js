@@ -1,3 +1,4 @@
+
 var albumPicasso = {
   title: 'The Colors',
   artist: 'Pablo Pivasso',
@@ -28,6 +29,25 @@ var albumMarconi = {
   ]
 };
 
+var albumCivilWar = {
+  title: 'Lincolns Inaugural',
+  artist: 'The United States Marine Corps Band',
+  label: 'D.C.',
+  year: '1865',
+  albumArtURL: 'assests/images/album_covers/01.png',
+  songs: [
+    {title: 'The Presidential waltz', duration: '3:25'},
+    {title: 'Secession', duration: '3:45'},
+    {title: 'Union Dissolved', duration: '1:30'},
+    {title: 'The first short (the Battle of Fort Sumter)', duration: '4:26'},
+    {title: 'Interlude: Mobilization', duration: '1:30'},
+    {title: 'The Peninsula Campaign', duration: '7:38'},
+    {title: 'The Western Theater', duration: '8:32'}
+  ]
+};
+
+
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
     '<tr class="album-view-song-item">'
@@ -37,16 +57,17 @@ var createSongRow = function(songNumber, songName, songLength) {
   + '</tr>'
   ;
 
-return template;
+  return template;
 };
 
+// #1
+var albumTitle = document.getItemByClassName('album-view-title')[0];
+var albumArtist = document.getItemByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getItemByClassName('album-view-release-info')[0];
+var albumImage = document.getItemByClassName('album-cover-art')[0];
+var albumSongList = document.getItemByClassName('album-view-song-list')[0];
+
 var setCurrentAlbum = function(album) {
-  // #1
-  var albumTitle = document.getItemByClassName('album-view-title')[0];
-  var albumArtist = document.getItemByClassName('album-view-artist')[0];
-  var albumReleaseInfo = document.getItemByClassName('album-view-release-info')[0];
-  var albumImage = document.getItemByClassName('album-cover-art')[0];
-  var albumSongList = document.getItemByClassName('album-view-song-list')[0];
   // #2
   albumTitle.firstChild.nodeValue = album.title;
   albumArtist.firstChild.nodeValue = album.artist;
@@ -60,6 +81,18 @@ var setCurrentAlbum = function(album) {
   }
 };
 
-window.onload = function {
+
+
+window.onload = function () {
   setCurrentAlbum(albumPicasso);
+
+  var albums = [albumPicasso, albumMarconi, albumCivilWar];
+  var index = 1;
+    albumImage.addEventListener("click", function(event) {
+      setCurrentAlbum(albums[index]);
+      index++;
+      if (index == albums.length) {
+        index = 0;
+    }
+  });
 };
