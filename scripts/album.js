@@ -19,7 +19,7 @@ var albumMarconi = {
   artist: 'Guglielmo Marconi',
   label: 'EM',
   year: '1909',
-  albumArtURL: 'assests/images/album_covers/20.png',
+  albumArtURL: 'assets/images/album_covers/20.png',
   songs: [
     {title: 'Hello, Operator', duration: '1:01'},
     {title: 'Ring, ring, ring', duration: '5:01'},
@@ -34,7 +34,7 @@ var albumCivilWar = {
   artist: 'The United States Marine Corps Band',
   label: 'D.C.',
   year: '1865',
-  albumArtURL: 'assests/images/album_covers/05.png',
+  albumArtURL: 'assets/images/album_covers/05.png',
   songs: [
     {title: 'The Presidential waltz', duration: '3:25'},
     {title: 'Secession', duration: '3:45'},
@@ -91,26 +91,28 @@ window.onload = function () {
 
   songListContainer.addEventListener('mouseover', function(event) {
   // #1
-  if(event.target.parentElement.className === 'album-view-song-item') {
-    event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+    console.log('mouseover')
+    if(event.target.parentElement.className === 'album-view-song-item') {
+      event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
     }
   });
 
   for (var i = 0; i < songRows.length; i++) {
     songRows[i].addEventListener('mouseleave', function(event) {
-    // Selects first child element, which is the song-item-number element
-    this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
-  });
-}
+      console.log('mouseleave')
+      // Selects first child element, which is the song-item-number element
+      this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+    });
+  }
 
 
-  var albums = [albumPicasso, albumMarconi, albumCivilWar];
-  var index = 1;
-    albumImage.addEventListener("click", function(event) {
-      setCurrentAlbum(albums[index]);
-      index++;
-      if (index == albums.length) {
-        index = 0;
-    }
-  });
+  // var albums = [albumPicasso, albumMarconi, albumCivilWar];
+  // var index = 1;
+  //   albumImage.addEventListener("click", function(event) {
+  //     setCurrentAlbum(albums[index]);
+  //     index++;
+  //     if (index == albums.length) {
+  //       index = 0;
+  //   }
+  // });
 };
