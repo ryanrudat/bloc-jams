@@ -68,6 +68,12 @@ var albumImage = document.getElementsByClassName('album-cover-art')[0];
 var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
 
+var findParentByClassName = function(element) {
+  if(element === true)
+    console.log()
+}
+
+
 var findParentByClassName = function(element, targetClass) {
   if (element) {
     var currentParent = element.parentElement;
