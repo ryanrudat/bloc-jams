@@ -71,10 +71,18 @@ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 var findParentByClassName = function(element, targetClass) {
   if (element) {
     var currentParent = element.parentElement;
-    while (currentParent.className !== targetClass && currentParent.className !== null) {
-      currentParent = currentParent.parentElement;
+    if(currentParent) {
+      while (currentParent.className !== targetClass && currentParent.className !== null) {
+        currentParent = currentParent.parentElement;
+      }
+      if(currentParent) {
+        return currentParent
+      } else {
+        console.log("No parent found with that class name")
+      }      
+    } else {
+      console.log("No parent found")
     }
-      return currentParent;
   }
 };
 
