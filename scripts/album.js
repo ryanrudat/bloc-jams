@@ -19,12 +19,14 @@ var createSongRow = function(songNumber, songName, songLength) {
       		// Revert to song number for currently playing song because user started playing new song.
       		var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
       		currentlyPlayingCell.html(currentlyPlayingSongNumber);
-      	}
+
+        }
 
         if (currentlyPlayingSongNumber !== songNumber) {
       		// Switch from Play -> Pause button to indicate new song is playing.
       		$(this).html(pauseButtonTemplate);
-      		currentlyPlayingSongNumber = songNumber;
+
+          currentlyPlayingSongNumber = songNumber;
           currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 
         } else if (currentlyPlayingSongNumber === songNumber) {
@@ -41,7 +43,7 @@ var onHover = function(event) {
   // Placeholder for function logic
     var songNumberCell = $(this).find('.song-item-number');
     var songNumber = songNumberCell.attr('data-song-number');
-    //console.log('onHover', currentlyPlayingSong, songNumber)
+console.log(onHover, songNumber, currentlyPlayingSongNumber)
 
     if(songNumber !== currentlyPlayingSongNumber) {
       songNumberCell.html(playButtonTemplate);
@@ -52,10 +54,12 @@ var onHover = function(event) {
 var offHover = function(event) {
       var songNumberCell = $(this).find('.song-item-number');
       var songNumber = songNumberCell.attr('data-song-number');
-      //console.log('offHover', currentlyPlayingSong, songNumber)
+console.log(offHover, songNumber, currentlyPlayingSongNumber)
+
 
       if(songNumber !== currentlyPlayingSongNumber) {
         songNumberCell.html(songNumber);
+
     }
 };
 
@@ -87,7 +91,6 @@ var findParentByClassName = function(element) {
 var setCurrentAlbum = function(album) {
   currentAlbum = album;
 
-
   $albumTitle.text(album.title);
   $albumArtist.text(album.artist);
   $albumReleaseInfo.text(album.year + '' + album.label);
@@ -102,6 +105,15 @@ var setCurrentAlbum = function(album) {
     $albumSongList.append($newRow);
   }
 };
+
+var updatePlayerBarSong = function() {
+
+  $('.currently-playing .song-name').text(currentSongFromAlbum.title);
+  $('.currently-playing .artist-name').text(currentAlbum.artist);
+  $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + '' + currentAlbum.artist);
+};
+
+
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
