@@ -15,15 +15,12 @@
   $.each($('.point'), revealPoint);
 };
 
-
 $(window).load(function() {
-
-    // #1
+  // #1
     if ($(window).height() > 950) {
       animatePoints();
     }
-
-    // #2
+// #2
     var scrollDistance = $('.selling-points').offset().top - $(window).height() + 200;
 
 
