@@ -1,7 +1,5 @@
 var $setSong = function(songNumber) {
-
  currentlyPlayingSongNumber = parseInt(songNumber);
-
  currentSongFromAlbum = creatAlbum.songs[songNumber - 1];
 };
 
