@@ -115,26 +115,6 @@ var offHover = function(event) {
   return $row;
 };
 
-
-//ASSIGNMENT 20
-var $togglePlayFromPlayerBar = function () {
-
-  if(currentSoundFile.isPaused()) {
-    songNumberCell.html(pauseButtonTemplate);
-    largePlayButton.html(playerBarPauseButton);
-    currentSoundFile.play();
-  }else{
-  /*  (currentlyPlayingSongNumber.isPlay()) {
-    songNumberCell.html(playButtonTemplate);
-    largePlayButton.html(playerBarPlayButton);
-    currentSoundFile.pause();
-  }
-};
-*/
-
-
-
-
 // #1
 
 var $albumTitle = $('.album-view-title');
@@ -258,3 +238,17 @@ $(document).ready(function() {
   $mainPlayButton.click(togglePlayFromPlayerBar);
 
 });
+//ASSIGNMENT 20
+var $togglePlayFromPlayerBar = function () {
+
+  if(currentSoundFile.isPaused()) {
+    songNumberCell.html(pauseButtonTemplate);
+    largePlayButton.html(playerBarPauseButton);
+    currentSoundFile.play();
+  }else{
+    songNumberCell.html(playButtonTemplate);
+    largePlayButton.html(playerBarPlayButton);
+    currentSoundFile.pause();
+  }
+
+};
