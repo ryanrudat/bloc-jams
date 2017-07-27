@@ -116,6 +116,25 @@ var offHover = function(event) {
 };
 
 
+//ASSIGNMENT 20
+var $togglePlayFromPlayerBar = function () {
+
+  if(currentSoundFile.isPaused()) {
+    songNumberCell.html(pauseButtonTemplate);
+    largePlayButton.html(playerBarPauseButton);
+    currentSoundFile.play();
+  }else{
+  /*  (currentlyPlayingSongNumber.isPlay()) {
+    songNumberCell.html(playButtonTemplate);
+    largePlayButton.html(playerBarPlayButton);
+    currentSoundFile.pause();
+  }
+};
+*/
+
+
+
+
 // #1
 
 var $albumTitle = $('.album-view-title');
@@ -230,15 +249,12 @@ var currentSoundFile = null;
 var currentVolume = 80;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $mainPlayButton = $('.main-controls .play-pause');
 
-
-//window.onload = function () {
 $(document).ready(function() {
   setCurrentAlbum(albumPicasso);
   $previousButton.click(previousSong);
   $nextButton.click(nextSong);
-
-
-
+  $mainPlayButton.click(togglePlayFromPlayerBar);
 
 });
