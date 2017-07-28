@@ -65,7 +65,7 @@ var createSongRow = function(songNumber, songName, songLength) {
           currentSoundFile.play();
           updatePlayerBarSong();
           //console.log('currentlyPlaySongNumber', currentSoundFile.play)
-        } else if (setSong(songNumber)) {
+        } else {
 
           // Switch from Pause -> Play button to pause currently playing song.
           /*
@@ -76,10 +76,12 @@ var createSongRow = function(songNumber, songName, songLength) {
           */
           if(currentSoundFile.isPaused()) {
             $(this).html(pauseButtonTemplate);
+            setSong(songNumber)
             $('.main-controls .play-pause').html(playerBarPauseButton);
               currentSoundFile.play();
           } else {
             $(this).html(playButtonTemplate);
+            currentlyPlayingSongNumber = null;
             $('.main-controls .play-pause').html(playerBarPlayButton);
               currentSoundFile.pause();
               //console.log('currentSoundFile',)
@@ -119,7 +121,6 @@ var offHover = function(event) {
   // #3
   return $row;
 };
-
 
 // #1
 
@@ -289,16 +290,28 @@ var currentSoundFile = null;
 var currentVolume = 80;
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $mainPlayButton = $('.main-controls .play-pause');
 
-
-//window.onload = function () {
 $(document).ready(function() {
   setCurrentAlbum(albumPicasso);
   setUpSeekBars();
   $previousButton.click(previousSong);
   $nextButton.click(nextSong);
-
-
-
+  $mainPlayButton.click($togglePlayFromPlayerBar);
 
 });
+//ASSIGNMENT 20
+var $togglePlayFromPlayerBar = function () {
+  var songNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+  if(currentSoundFile.isPaused()) {
+    songNumberCell.html(pauseButtonTemplate);
+    $mainPlayButton.html(playerBarPauseButton);
+    setSong(currentlyPlayingSongNumber);
+    currentSoundFile.play();
+  }else{
+    songNumberCell.html(playButtonTemplate);
+    $mainPlayButton.html(playerBarPlayButton);
+    currentSoundFile.pause();
+  }
+
+};
